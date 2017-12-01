@@ -1,0 +1,23 @@
+{
+  "name": "politics",
+  "version": "1.0.0",
+  "description": "An app using a politics API",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ravenusmc/politics.git"
+  },
+  "author": "Mike Cuddy",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ravenusmc/politics/issues"
+  },
+  "homepage": "https://github.com/ravenusmc/politics#readme",
+  "dependencies": {
+    "ejs": "^2.5.7",
+    "express": "^4.16.2"
+  }
+}
