@@ -8,15 +8,15 @@ const app = express();
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
+//Setting up public folder 
+app.use(express.static(path.join(__dirname, 'public')));
 
-//Home Route
+
+//Login Page 
 app.get('/', (req, res) => {
-  res.render('index', {
-    title: "Hello World"
-  });
+  res.render('login');
 });
 
-//
 
 //Start Server 
 app.listen(3000, () => {
