@@ -11,7 +11,6 @@ app.set('view engine', 'ejs');
 //Setting up public folder 
 app.use(express.static(path.join(__dirname, 'public')));
 
-
 //Login Page 
 app.get('/', (req, res) => {
   res.render('login');
