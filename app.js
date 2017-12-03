@@ -16,6 +16,11 @@ app.get('/', (req, res) => {
   res.render('login');
 });
 
+//Sign Up page 
+app.get('/signup', (req, res) => {
+  res.render('signup');
+})
+
 
 //Start Server 
 app.listen(3000, () => {

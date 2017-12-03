@@ -8,10 +8,29 @@ body, html {
   text-align: center;
 }
 
-/* CSS for Login Page */
+button {
+  border-color: red;
+  color: blue;
+  border-radius: 8px;
+  padding: 15px;
+}
+
+/* CSS for Login and some of sign up Page */
 
 .login_background {
   background-image: url(https://source.unsplash.com/s4vuMuapk4Y);
+  height: 100%;
+  background-repeat: none;
+  background-position: center;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.signup_background {
+  background-image: url(https://source.unsplash.com/nlmq5jC9Slo);
   height: 100%;
   background-repeat: none;
   background-position: center;
@@ -32,9 +51,14 @@ body, html {
   color: white;
 }
 
+.login_title {
+  padding-top: 10px;
+}
+
 .login_form {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  padding-top: 10px;
 }
