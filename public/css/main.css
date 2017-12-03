@@ -27,7 +27,14 @@ body, html {
   flex-direction: column;
   background-color: rgba(0,0,0,0.7);
   border-radius: 5px;
-  height: 300px;
-  width: 350px;
+  height: 250px;
+  width: 400px;
   color: white;
+}
+
+.login_form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
