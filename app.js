@@ -1,5 +1,23 @@
 const express = require('express');
 const path = require('path');
+const mongoose = require('mongoose');
+
+//Connecting to database 
+mongoose.connect('mongodb://localhost/politics');
+let db = mongoose.connection;
+
+//Checking connection
+db.once('open', () =>{
+  console.log('Connected to MongoDB!');
+})
+
+//Checking for DB errors
+db.on('error', (err) => {
+  console.log(err);
+});
+
+//Bringing in the model
+let User = require('./models/user');
 
 //Init App
 const app = express();
@@ -19,6 +37,22 @@ app.get('/', (req, res) => {
 //Sign Up page 
 app.get('/signup', (req, res) => {
   res.render('signup');
+})
+
+//Home Page 
+app.get('/home', (req, res) =>{
+
+  User.find({}, (err, users)=>{
+    if(err){
+      console.log(err);
+    }else {
+      res.render('home', {
+        users: users
+      });
+    }
+    
+  });
+  
 })
 
 
