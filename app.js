@@ -1,6 +1,7 @@
 const express = require('express');
 const path = require('path');
 const mongoose = require('mongoose');
+const bodyParser = require('body-parser');
 
 //Connecting to database 
 mongoose.connect('mongodb://localhost/politics');
@@ -22,6 +23,11 @@ let User = require('./models/user');
 //Init App
 const app = express();
 
+//Body Parser Middleware
+app.use(bodyParser.urlencoded({ extended: false }))
+// parse application/json
+app.use(bodyParser.json())
+
 //Load view engine 
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
@@ -39,9 +45,22 @@ app.get('/signup', (req, res) => {
   res.render('signup');
 })
 
+app.post('/signup', (req, res)=> {
+  let user = new User();
+  user.username = req.body.username;
+  user.password = req.body.password;
+  user.save( (err)=>{
+    if (err){
+      console.log(err);
+      return
+    }else {
+      res.redirect('/');
+    }
+  });
+});
+
 //Home Page 
 app.get('/home', (req, res) =>{
-
   User.find({}, (err, users)=>{
     if(err){
       console.log(err);
@@ -50,10 +69,8 @@ app.get('/home', (req, res) =>{
         users: users
       });
     }
-    
   });
-  
-})
+});
 
 
 //Start Server 
