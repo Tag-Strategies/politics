@@ -5,7 +5,7 @@ const bodyParser = require('body-parser');
 const expressValidator = require('express-validator');
 const flash = require('connect-flash');
 const session = require('express-session');
-// const bcrypt  = require('bcryptjs');
+const bcrypt = require('bcryptjs');
 // const config = require('./config/database');
 // const passport = require('passport');
 
@@ -109,20 +109,44 @@ app.post('/signup', (req, res)=> {
     });
   }else {
 
-    let user = new User();
-    user.username = req.body.username;
-    user.password = req.body.password;
-    user.save( (err)=>{
-      if (err){
-        console.log(err);
-        return
-      }else {
-        req.flash('success', 'User Added!')
-        res.redirect('/');
-      }
+    let newUser = new User({
+      username: username,
+      password: password
+    });
+
+    bcrypt.genSalt(10, (err, salt) => {
+        bcrypt.hash(newUser.password, salt, (err, hash)=> {
+          if (err){
+            console.log(err);
+          }
+          newUser.password = hash;
+          newUser.save((err) => {
+            if(err){
+              console.log(err);
+              return;
+            }else {
+              req.flash('success', 'You are now registered and can log in!');
+              res.redirect('/');
+            }
+          });
+        });
     });
   }
 });
+
+
+    // user.username = req.body.username;
+    // user.password = req.body.password;
+
+    // user.save( (err)=>{
+    //   if (err){
+    //     console.log(err);
+    //     return
+    //   }else {
+    //     req.flash('success', 'User Added!')
+    //     res.redirect('/');
+    //   }
+    // });
 
 //Home Page 
 app.get('/home', (req, res) =>{
