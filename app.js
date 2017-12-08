@@ -2,6 +2,12 @@ const express = require('express');
 const path = require('path');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
+const expressValidator = require('express-validator');
+const flash = require('connect-flash');
+const session = require('express-session');
+// const bcrypt  = require('bcryptjs');
+// const config = require('./config/database');
+// const passport = require('passport');
 
 //Connecting to database 
 mongoose.connect('mongodb://localhost/politics');
@@ -35,28 +41,87 @@ app.set('view engine', 'ejs');
 //Setting up public folder 
 app.use(express.static(path.join(__dirname, 'public')));
 
+//Express Session Middleware
+app.use(session({
+  secret: 'keyboard cat',
+  resave: true,
+  saveUninitialized: true
+}));
+
+//Express Messages Middleware
+app.use(require('connect-flash')());
+app.use(function (req, res, next) {
+  res.locals.messages = require('express-messages')(req, res);
+  next();
+});
+
+
+//Express validation middleware
+app.use(expressValidator({
+  errorFormatter: function(param, msg, value) {
+      var namespace = param.split('.')
+      , root    = namespace.shift()
+      , formParam = root;
+
+    while(namespace.length) {
+      formParam += '[' + namespace.shift() + ']';
+    }
+    return {
+      param : formParam,
+      msg   : msg,
+      value : value
+    };
+  }
+}));
+
 //Login Page 
 app.get('/', (req, res) => {
-  res.render('login');
+  let errors = null;
+  res.render('login', {
+    errors: errors
+  });
 });
 
 //Sign Up page 
 app.get('/signup', (req, res) => {
-  res.render('signup');
-})
+  let errors = null;
+  res.render('signup', {
+    errors: errors
+  });
+});
 
 app.post('/signup', (req, res)=> {
-  let user = new User();
-  user.username = req.body.username;
-  user.password = req.body.password;
-  user.save( (err)=>{
-    if (err){
-      console.log(err);
-      return
-    }else {
-      res.redirect('/');
-    }
-  });
+
+  const username = req.body.username;
+  const password = req.body.password;
+  const password2 = req.body.password2;
+
+  req.checkBody('username', 'Username is required').notEmpty();
+  req.checkBody('password', 'password is required').notEmpty();
+  req.checkBody('password2', 'passwords do not match').equals(req.body.password);
+
+  //Getting errors
+  let errors = req.validationErrors();
+
+  if (errors){
+    res.render('signup', {
+      errors: errors
+    });
+  }else {
+
+    let user = new User();
+    user.username = req.body.username;
+    user.password = req.body.password;
+    user.save( (err)=>{
+      if (err){
+        console.log(err);
+        return
+      }else {
+        req.flash('success', 'User Added!')
+        res.redirect('/');
+      }
+    });
+  }
 });
 
 //Home Page 
