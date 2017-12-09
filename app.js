@@ -6,8 +6,9 @@ const expressValidator = require('express-validator');
 const flash = require('connect-flash');
 const session = require('express-session');
 const bcrypt = require('bcryptjs');
-const config = require('./config/database');
 const passport = require('passport');
+const config = require('./config/database');
+
 
 //Connecting to database 
 mongoose.connect(config.database);
@@ -167,11 +168,14 @@ app.get('/logout', (req, res)=> {
 
 //Home Page 
 app.get('/home', (req, res) =>{
+
   User.find({}, (err, users)=>{
     if(err){
       console.log(err);
     }else {
+      let errors = null;
       res.render('home', {
+        errors: errors,
         users: users
       });
     }
