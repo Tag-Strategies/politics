@@ -6,11 +6,11 @@ const expressValidator = require('express-validator');
 const flash = require('connect-flash');
 const session = require('express-session');
 const bcrypt = require('bcryptjs');
-// const config = require('./config/database');
-// const passport = require('passport');
+const config = require('./config/database');
+const passport = require('passport');
 
 //Connecting to database 
-mongoose.connect('mongodb://localhost/politics');
+mongoose.connect(config.database);
 let db = mongoose.connection;
 
 //Checking connection
@@ -74,12 +74,36 @@ app.use(expressValidator({
   }
 }));
 
+//passport config
+require('./config/passport')(passport);
+
+//Passport Middleware
+app.use(passport.initialize());
+app.use(passport.session());
+
+//Global passport route
+app.get('*', function(req,res,next){
+  res.locals.user = req.user || null;
+  next();
+});
+
 //Login Page 
 app.get('/', (req, res) => {
   let errors = null;
   res.render('login', {
     errors: errors
   });
+});
+
+app.post('/', (req, res, next) =>{
+
+    //Using passport to have the user login.
+    passport.authenticate('local', {
+      successRedirect: 'home',
+      failureRedirect: '/',
+      failureFlash: true
+    })(req, res, next);
+
 });
 
 //Sign Up page 
@@ -134,19 +158,12 @@ app.post('/signup', (req, res)=> {
   }
 });
 
-
-    // user.username = req.body.username;
-    // user.password = req.body.password;
-
-    // user.save( (err)=>{
-    //   if (err){
-    //     console.log(err);
-    //     return
-    //   }else {
-    //     req.flash('success', 'User Added!')
-    //     res.redirect('/');
-    //   }
-    // });
+//Logout 
+app.get('/logout', (req, res)=> {
+  req.logout();
+  req.flash('success', 'You are logged out!');
+  res.redirect('/');
+})
 
 //Home Page 
 app.get('/home', (req, res) =>{
