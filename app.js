@@ -1,4 +1,5 @@
 const express = require('express');
+const router = express.Router();
 const path = require('path');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
@@ -167,20 +168,20 @@ app.get('/logout', (req, res)=> {
 })
 
 //Home Page 
-app.get('/home', ensureAuthenticated, (req, res) =>{
+// app.get('/home', ensureAuthenticated, (req, res) =>{
 
-  User.find({}, (err, users)=>{
-    if(err){
-      console.log(err);
-    }else {
-      let errors = null;
-      res.render('home', {
-        errors: errors,
-        users: users
-      });
-    }
-  });
-});
+//   User.find({}, (err, users)=>{
+//     if(err){
+//       console.log(err);
+//     }else {
+//       let errors = null;
+//       res.render('home', {
+//         errors: errors,
+//         users: users
+//       });
+//     }
+//   });
+// });
 
 //Access Control
 function ensureAuthenticated(req, res, next) {
@@ -191,6 +192,9 @@ function ensureAuthenticated(req, res, next) {
     res.redirect('/')
   }
 }
+
+let main = require('./routes/main');
+app.use('/home', main);
 
 
 //Start Server 
