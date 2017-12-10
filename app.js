@@ -9,6 +9,7 @@ const session = require('express-session');
 const bcrypt = require('bcryptjs');
 const passport = require('passport');
 const config = require('./config/database');
+const ctrlMain = require('./controllers/main')
 
 
 //Connecting to database 
@@ -160,28 +161,14 @@ app.post('/signup', (req, res)=> {
   }
 });
 
+app.get('/home', ensureAuthenticated, ctrlMain.home);
+
 //Logout 
 app.get('/logout', (req, res)=> {
   req.logout();
   req.flash('success', 'You are logged out!');
   res.redirect('/');
 })
-
-//Home Page 
-// app.get('/home', ensureAuthenticated, (req, res) =>{
-
-//   User.find({}, (err, users)=>{
-//     if(err){
-//       console.log(err);
-//     }else {
-//       let errors = null;
-//       res.render('home', {
-//         errors: errors,
-//         users: users
-//       });
-//     }
-//   });
-// });
 
 //Access Control
 function ensureAuthenticated(req, res, next) {
@@ -192,10 +179,6 @@ function ensureAuthenticated(req, res, next) {
     res.redirect('/')
   }
 }
-
-let main = require('./routes/main');
-app.use('/home', main);
-
 
 //Start Server 
 app.listen(3000, () => {
