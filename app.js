@@ -167,7 +167,7 @@ app.get('/logout', (req, res)=> {
 })
 
 //Home Page 
-app.get('/home', (req, res) =>{
+app.get('/home', ensureAuthenticated, (req, res) =>{
 
   User.find({}, (err, users)=>{
     if(err){
@@ -181,6 +181,16 @@ app.get('/home', (req, res) =>{
     }
   });
 });
+
+//Access Control
+function ensureAuthenticated(req, res, next) {
+  if(req.isAuthenticated()){
+    return next();
+  }else {
+    req.flash('danger', 'Please Login');
+    res.redirect('/')
+  }
+}
 
 
 //Start Server 

@@ -5,9 +5,7 @@ const bcrypt =require('bcryptjs');
 const passport = require('passport');
 
 module.exports = function(passport){
-
-  console.log('Outside');
-
+  
   //Local Strategy
   passport.use(new LocalStrategy(function(username, password, done){
 
