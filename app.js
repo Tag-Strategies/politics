@@ -11,7 +11,6 @@ const passport = require('passport');
 const config = require('./config/database');
 const ctrlMain = require('./controllers/main')
 
-
 //Connecting to database 
 mongoose.connect(config.database);
 let db = mongoose.connection;
@@ -162,6 +161,8 @@ app.post('/signup', (req, res)=> {
 });
 
 app.get('/home', ensureAuthenticated, ctrlMain.home);
+app.post('/home', ensureAuthenticated, ctrlMain.results);
+app.get('/test', ensureAuthenticated, ctrlMain.test);
 
 //Logout 
 app.get('/logout', (req, res)=> {

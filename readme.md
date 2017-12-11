@@ -29,3 +29,5 @@ Node packages used are Express, EJS.
 To see a video that talks about this project please go here: Coming Soon
 
 Blog entry: Coming Soon
+
+https://api.open.fec.gov/v1/candidates/search/?per_page=20&api_key=fDk8wXbxet3t4GuqnIa2I6TdlZBZnhy6GCEprEjj&sort=name&page=1&name=Mitt%20Romney

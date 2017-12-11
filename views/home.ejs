@@ -1,8 +1,23 @@
 <% include partials/header %>
 
-<h1>Home Page</h1>
+<!-- <form method='POST' action='/home'>
+  <input placeholder='firstname' name='firstName'>
+  <input placeholder='lastname'>
+  <button type='submit'>Submit</button>
+</form> -->
 
+<form>
+  <input placeholder='firstname' id='firstname'>
+  <input placeholder='lastname' id='lastname'>
+  <button onclick='test(); return false;'>Submit</button>
+</form>
 
+<h1 id='testOne'></h1>
 
-
+<script type="text/javascript" src='/js/main.js'></script>
 <% include partials/footer %>
+
+
+
+
+
