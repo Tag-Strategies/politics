@@ -1,4 +1,4 @@
-function test() {
+function politicianData() {
   let firstName = document.getElementById('firstname').value;
   let lastName = document.getElementById('lastname').value;
 
@@ -18,5 +18,5 @@ function test() {
   // console.log(response_parsed);
   // console.log(response_parsed.results["0"].active_through)
 
-
 };
+

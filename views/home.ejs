@@ -1,21 +1,44 @@
 <% include partials/header %>
 
-<!-- <form method='POST' action='/home'>
-  <input placeholder='firstname' name='firstName'>
-  <input placeholder='lastname'>
-  <button type='submit'>Submit</button>
-</form> -->
+  <!-- Header -->
+  <header>
+      <div id='slider'>
+        <div class='slide slide1'>
+          <div class='slide-content'>
+          </div>
+        </div>
+
+        <div class='slide slide2'>
+          <div class='slide-content'>
+          </div>
+        </div>
+
+        <div class='slide slide3'>
+          <div class='slide-content'>
+          </div>
+        </div>
+      </div>
+  </header>
+  <!-- End Header -->
 
 <form>
   <input placeholder='firstname' id='firstname'>
   <input placeholder='lastname' id='lastname'>
-  <button onclick='test(); return false;'>Submit</button>
+  <button onclick='politicianData(); return false;'>Submit</button>
 </form>
 
 <h1 id='testOne'></h1>
 
 <script type="text/javascript" src='/js/main.js'></script>
+<script type="text/javascript" src='/js/image.js'></script>
 <% include partials/footer %>
+
+
+<!-- <form method='POST' action='/home'>
+  <input placeholder='firstname' name='firstName'>
+  <input placeholder='lastname'>
+  <button type='submit'>Submit</button>
+</form> -->
 
 
 
