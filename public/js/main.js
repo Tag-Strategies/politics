@@ -15,8 +15,8 @@ function politicianData() {
 
   document.getElementById('testOne').innerHTML = testOne;
 
-  // console.log(response_parsed);
-  // console.log(response_parsed.results["0"].active_through)
+  console.log(response_parsed);
+  //console.log(response_parsed.results["0"].active_through)
 
 };
 
