@@ -15,8 +15,13 @@ function politicianData() {
 
   document.getElementById('testOne').innerHTML = testOne;
 
-  console.log(response_parsed);
-  //console.log(response_parsed.results["0"].active_through)
-
+  return response_parsed
 };
+
+function mainFunction() {
+
+  response_parsed = politicianData();
+  console.log(response_parsed);
+
+}
 
