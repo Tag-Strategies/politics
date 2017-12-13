@@ -1,4 +1,14 @@
-function politicianData() {
+
+//This is a candidate object that will contain data on them 
+// let candidate_info_0 = {
+//     candidate_status: '',
+//     cycles: '',
+//     office_full: '',
+//     party_full: '',
+//     state: ''
+// }
+
+function gettingPoliticianData() {
   let firstName = document.getElementById('firstname').value;
   let lastName = document.getElementById('lastname').value;
 
@@ -18,10 +28,23 @@ function politicianData() {
   return response_parsed
 };
 
+function sortingPoliticianData(response_parsed){
+
+  //console.log(response_parsed.results["1"].candidate_status);
+  console.log(response_parsed)
+  debugger;
+  for (let i = 0; i < response_parsed.results.length; i++){
+    candidate_status = response_parsed.results[i].candidate_status;
+    console.log(candidate_status)
+  }
+
+}
+
 function mainFunction() {
 
-  response_parsed = politicianData();
-  console.log(response_parsed);
+  response_parsed = gettingPoliticianData();
+  sortingPoliticianData(response_parsed);
+  //console.log(response_parsed);
 
 }
 
