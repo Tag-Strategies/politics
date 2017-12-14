@@ -1,13 +1,20 @@
+//This file will handle the API request for the information that the user submits. 
 
 //This is a candidate object that will contain data on them 
-// let candidate_info_0 = {
-//     candidate_status: '',
-//     cycles: '',
-//     office_full: '',
-//     party_full: '',
-//     state: ''
-// }
+let candidate_info = {
+    candidate_status: '',
+    cycles: '',
+    office_full: '',
+    party_full: '',
+    state: ''
+}
 
+//This is the array that will hold the candidate info object
+let candidate_info_array = [];
+
+
+/* The purpose of this function is to collect the politician data from the FEC API. 
+The function will then return the data that is collected. */
 function gettingPoliticianData() {
   let firstName = document.getElementById('firstname').value;
   let lastName = document.getElementById('lastname').value;
@@ -21,25 +28,32 @@ function gettingPoliticianData() {
   //parsing the response 
   let response_parsed = JSON.parse(response);
 
-  let testOne = response_parsed.results["0"].active_through
-
-  document.getElementById('testOne').innerHTML = testOne;
-
   return response_parsed
 };
 
+//This function will pull the specific data that I need from the FEC API.
 function sortingPoliticianData(response_parsed){
 
   //console.log(response_parsed.results["1"].candidate_status);
   console.log(response_parsed)
   debugger;
   for (let i = 0; i < response_parsed.results.length; i++){
+
     candidate_status = response_parsed.results[i].candidate_status;
-    console.log(candidate_status)
+    office_full = response_parsed.results[i].office_full;
+    party_full = response_parsed.results[i].party_full;
+    state = response_parsed.results[i].state;
+    cycles = response_parsed.results[i].cycles;
+
+    //I need to get all of the data like I did candidate_status above, looping through the array
+    //Also need to loop through the cycles data within this loop. 
+    //put the data into an object
+    //place that object into an array 
   }
 
 }
 
+//This function is what luanches when the user his the submit button. 
 function mainFunction() {
 
   response_parsed = gettingPoliticianData();
