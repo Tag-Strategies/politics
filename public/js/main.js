@@ -1,13 +1,16 @@
 //This file will handle the API request for the information that the user submits. 
+'use strict';
 
 //This is a candidate object that will contain data on them 
-let candidate_info = {
-    candidate_status: '',
-    cycles: '',
-    office_full: '',
-    party_full: '',
-    state: ''
-}
+// let candidate_info = {
+//     candidate_status: '',
+//     cycles: '',
+//     office_full: '',
+//     party_full: '',
+//     state: ''
+// }
+
+let candidateInfo = new Object();
 
 //This is the array that will hold the candidate info object
 let candidate_info_array = [];
@@ -34,19 +37,19 @@ function gettingPoliticianData() {
 //This function will pull the specific data that I need from the FEC API.
 function sortingPoliticianData(response_parsed){
 
-  //console.log(response_parsed.results["1"].candidate_status);
-  console.log(response_parsed)
-  debugger;
+  console.log(response_parsed);
   for (let i = 0; i < response_parsed.results.length; i++){
 
+    let candidateInfo = new Object();
+
     candidate_status = response_parsed.results[i].candidate_status;
+    cycles = response_parsed.results[i].cycles;
     office_full = response_parsed.results[i].office_full;
     party_full = response_parsed.results[i].party_full;
     state = response_parsed.results[i].state;
-    cycles = response_parsed.results[i].cycles;
 
-    //I need to get all of the data like I did candidate_status above, looping through the array
-    //Also need to loop through the cycles data within this loop. 
+    candidateInfo.candidate_status = candidate_status;
+    console.log('Test' + ' ' + candidateInfo.candidate_status);
     //put the data into an object
     //place that object into an array 
   }
