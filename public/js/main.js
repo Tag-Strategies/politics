@@ -56,10 +56,10 @@ function sortingPoliticianData(response_parsed){
     candidateInfo.state = state; 
 
     //pushing the object into an array of objects
-    candidate_info_array.push(candidate_info)
+    candidate_info_array.push(candidate_info);
     console.log('Test' + ' ' + candidateInfo.candidate_status);
- 
   }
+  return candidate_info_array;
 
 }
 
