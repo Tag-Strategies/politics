@@ -38,20 +38,27 @@ function gettingPoliticianData() {
 function sortingPoliticianData(response_parsed){
 
   console.log(response_parsed);
+  //This for loop will go through the responses pulling the data that I want
   for (let i = 0; i < response_parsed.results.length; i++){
-
+    //Creating a new object that will hold the data
     let candidateInfo = new Object();
-
+    //Specific data that I want from the response
     candidate_status = response_parsed.results[i].candidate_status;
     cycles = response_parsed.results[i].cycles;
     office_full = response_parsed.results[i].office_full;
     party_full = response_parsed.results[i].party_full;
     state = response_parsed.results[i].state;
-
+    //Setting the data to the object
     candidateInfo.candidate_status = candidate_status;
+    candidateInfo.cycles = cycles;
+    candidateInfo.office_full = office_full;
+    candidateInfo.party_full = party_full;
+    candidateInfo.state = state; 
+
+    //pushing the object into an array of objects
+    candidate_info_array.push(candidate_info)
     console.log('Test' + ' ' + candidateInfo.candidate_status);
-    //put the data into an object
-    //place that object into an array 
+ 
   }
 
 }
