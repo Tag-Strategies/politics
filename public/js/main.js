@@ -1,20 +1,9 @@
 //This file will handle the API request for the information that the user submits. 
 'use strict';
 
-//This is a candidate object that will contain data on them 
-// let candidate_info = {
-//     candidate_status: '',
-//     cycles: '',
-//     office_full: '',
-//     party_full: '',
-//     state: ''
-// }
-
-let candidateInfo = new Object();
-
+//Global Variables
 //This is the array that will hold the candidate info object
 let candidate_info_array = [];
-
 
 /* The purpose of this function is to collect the politician data from the FEC API. 
 The function will then return the data that is collected. */
