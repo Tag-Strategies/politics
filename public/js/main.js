@@ -21,9 +21,6 @@ function gettingPoliticianData() {
   //parsing the response 
   let response_parsed = JSON.parse(response);
 
-  // let testOne = response_parsed.results["0"].active_through
-  // document.getElementById('testOne').innerHTML = testOne;
-
   return response_parsed
 };
 

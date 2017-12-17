@@ -105,3 +105,33 @@ header {
   font-size: 5rem;
   color: white;
 }
+
+#homeMain {
+  margin-left: 5%;
+  margin-right: 5%;
+  margin-top: 50px;
+}
+
+#formArea {
+  border: 2px solid black;
+  width: 400px;
+}
+
+.inputSize {
+  width: 250px;
+}
+
+.candidateForm {
+  display: flex;
+  flex-direction: column;
+}
+
+footer {
+  border-top: 2px solid black;
+  text-align: center;
+  margin-top: 25px;
+}
+
+.footer_div {
+  padding-top: 25px;
+}
