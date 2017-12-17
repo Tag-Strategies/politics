@@ -55,9 +55,29 @@ function sortingPoliticianData(response_parsed){
   return candidate_info_array;
 }
 
-// function buildPage (candidate_info_array) {
-//   console.log(candidate_info_array);
-// }
+function buildPage (candidate_info_array) {
+
+  //Getting the length of the candidate_info_array
+  let array_length = candidate_info_array.length;
+
+  //This for loop will go through the candidate_info_array
+  for (let i = 0; i < array_length; i++) {
+
+    //Getting the variable to get the main container that all the data will be appended to
+    let main_parent = document.getElementById('resultsArea');
+
+    //Creating the elements where the data will go 
+    let status = document.createElement('p');
+
+    //Getting the content 
+    let status_info = "Candidate Status: ";
+
+    status.appendChild(status_info);
+    main_parent.appendChild(status);
+
+  }
+  console.log(candidate_info_array);
+}
 
 //This function is what luanches when the user his the submit button. 
 function mainFunction() {
@@ -65,8 +85,7 @@ function mainFunction() {
   //Calling the functions that will be used in the program
   let response_parsed = gettingPoliticianData();
   let candidate_info_array = sortingPoliticianData(response_parsed);
-  console.log(candidate_info_array);
-  // buildPage(candidate_info_array)
+  buildPage(candidate_info_array)
 
 
 }
