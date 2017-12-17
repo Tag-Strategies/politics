@@ -23,18 +23,31 @@
 
 <main id='homeMain'>
 
-  <div id='formArea'>
-    <h1>Candidate Information</h1>
-    <form class='candidateForm'>
-      <input class='inputSize' placeholder='firstname' id='firstname'>
-      <input class='inputSize' placeholder='lastname' id='lastname'>
-      <button onclick='mainFunction(); return false;'>Submit</button>
-    </form>
+  <div id='formUseArea'>
+
+    <div id='formArea' >
+      <h2 class='center'>Candidate Information</h2>
+      <form class='candidateForm'>
+        <input class='inputSize' placeholder='firstname' id='firstname'>
+        <input class='inputSize' placeholder='lastname' id='lastname'>
+        <button id='form_button' onclick='mainFunction(); return false;'>Submit</button>
+      </form>
+    </div>
+
+    <div id='useArea'>  
+      <h2 class='center'>How to Use</h2>
+      <ul>
+        <li>Type in a politicians name</li>
+        <li>See the results below</li>
+      </ul>
+    </div>
+
   </div>
 
-  <div id='responseArea'>
-    <h1 id='testOne'></h1>
+  <div id='resultsArea'>
+
   </div>
+
   
 </main>
 

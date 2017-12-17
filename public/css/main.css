@@ -1,4 +1,6 @@
-/* Generic HTML for whole page */
+/**************************
+ Generic HTML for whole page 
+ ***************************/
 
 body, html {
   height: 100%;
@@ -19,7 +21,9 @@ button {
   padding: 15px;
 }
 
-/* CSS for Login and some of sign up Page */
+/**************************
+CSS for Login and some of sign up Page 
+ ***************************/
 
 .login_background {
   background-image: url(https://source.unsplash.com/s4vuMuapk4Y);
@@ -67,7 +71,10 @@ button {
   padding-top: 10px;
 }
 
-/* CSS for Home Page */
+/**************************
+CSS for Home Page 
+***************************/
+
 header {
   font-family: Arial, Helvetica, sans-serif;
   overflow-x: hidden;
@@ -112,18 +119,45 @@ header {
   margin-top: 50px;
 }
 
-#formArea {
-  border: 2px solid black;
-  width: 400px;
+#formUseArea {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  border-bottom: 3px solid blue;
 }
 
-.inputSize {
-  width: 250px;
+#formArea {
+  width: 400px;
+  margin-bottom: 20px;
 }
 
 .candidateForm {
   display: flex;
   flex-direction: column;
+  align-items: center;
+}
+
+#form_button {
+  width: 250px;
+  background-color: blue;
+  color: white;
+  border: 5px solid red;
+  margin-top: 15px;
+}
+
+.inputSize {
+  width: 250px;
+  height: 50px;
+  margin-top: 15px;
+  font-size: 25px;
+}
+
+ul li {
+  font-size: 30px;
+}
+
+#resultsArea {
+  
 }
 
 footer {
