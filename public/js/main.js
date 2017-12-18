@@ -59,7 +59,6 @@ function buildPage (candidate_info_array) {
 
   //Getting the length of the candidate_info_array
   let array_length = candidate_info_array.length;
-
   //This for loop will go through the candidate_info_array
   for (let i = 0; i < array_length; i++) {
 
@@ -68,12 +67,33 @@ function buildPage (candidate_info_array) {
 
     //Creating the elements where the data will go 
     let status = document.createElement('p');
+    let cycle = document.createElement('p');
+    let office = document.createElement('p');
+    let party = document.createElement('p');
+    let state = document.createElement('p');
 
-    //Getting the content 
-    let status_info = "Candidate Status: ";
+    //Getting the content information
+    let status_info = document.createTextNode("Candidate Status: " + candidate_info_array[i].candidate_status);
+    let cycle_info = document.createTextNode("Cycles: " + candidate_info_array[i].cycles);
+    let office_info = document.createTextNode("Office: " + candidate_info_array[i].office_full);
+    let party_info = document.createTextNode("Party: " + candidate_info_array[i].party_full);
+    let state_info = document.createTextNode('State: ' + candidate_info_array[i].state);
 
+    //Attaching the information and then the node to the div container. 
     status.appendChild(status_info);
     main_parent.appendChild(status);
+
+    cycle.appendChild(cycle_info);
+    main_parent.appendChild(cycle);
+
+    office.appendChild(office_info);
+    main_parent.appendChild(office);
+
+    party.appendChild(party_info);
+    main_parent.appendChild(party);
+
+    state.appendChild(state_info);
+    main_parent.appendChild(state);
 
   }
   console.log(candidate_info_array);
