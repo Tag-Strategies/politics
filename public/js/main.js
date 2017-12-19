@@ -12,6 +12,8 @@ function gettingPoliticianData() {
   let firstName = document.getElementById('firstname').value;
   let lastName = document.getElementById('lastname').value;
 
+  document.getElementById('name_placement').innerHTML = firstName + ' ' + lastName;
+
   //Setting up to get the API request
   let xhr = new XMLHttpRequest();
   xhr.open("GET", "https://api.open.fec.gov/v1/candidates/search/?per_page=20&api_key=fDk8wXbxet3t4GuqnIa2I6TdlZBZnhy6GCEprEjj&sort=name&page=1&name=" + firstName + '%20' + lastName, false);
@@ -66,6 +68,7 @@ function buildPage (candidate_info_array) {
     let main_parent = document.getElementById('resultsArea');
 
     //Creating the elements where the data will go 
+    let attached_div = document.createElement('div');
     let status = document.createElement('p');
     let cycle = document.createElement('p');
     let office = document.createElement('p');
@@ -80,23 +83,24 @@ function buildPage (candidate_info_array) {
     let state_info = document.createTextNode('State: ' + candidate_info_array[i].state);
 
     //Attaching the information and then the node to the div container. 
+    main_parent.appendChild(attached_div);
+
     status.appendChild(status_info);
-    main_parent.appendChild(status);
+    attached_div.appendChild(status);
 
     cycle.appendChild(cycle_info);
-    main_parent.appendChild(cycle);
+    attached_div.appendChild(cycle);
 
     office.appendChild(office_info);
-    main_parent.appendChild(office);
+    attached_div.appendChild(office);
 
     party.appendChild(party_info);
-    main_parent.appendChild(party);
+    attached_div.appendChild(party);
 
     state.appendChild(state_info);
-    main_parent.appendChild(state);
+    attached_div.appendChild(state);
 
   }
-  console.log(candidate_info_array);
 }
 
 //This function is what luanches when the user his the submit button. 
