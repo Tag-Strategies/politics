@@ -99,17 +99,19 @@ function buildPage (candidate_info_array) {
 
     state.appendChild(state_info);
     attached_div.appendChild(state);
-
   }
+  candidate_info_array = [];
 }
 
 //This function is what luanches when the user his the submit button. 
 function mainFunction() {
-
+  
   //Calling the functions that will be used in the program
   let response_parsed = gettingPoliticianData();
   let candidate_info_array = sortingPoliticianData(response_parsed);
   buildPage(candidate_info_array)
+}
 
-
+function clear() {
+  location.reload();
 }
