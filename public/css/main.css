@@ -141,7 +141,7 @@ header {
   width: 150px;
   background-color: blue;
   color: white;
-  border: 5px solid red;
+  border: 3px solid red;
   margin-top: 15px;
   margin-right: 10px;
 }
@@ -162,6 +162,10 @@ ul li {
   font-size: 30px;
 }
 
+.info_area {
+  margin-top: 30px;
+}
+
 #resultsArea {
   display: flex;
   flex-direction: row;
@@ -177,4 +181,25 @@ footer {
 
 .footer_div {
   padding-top: 25px;
+}
+
+/****************************
+Media Queries 
+*****************************/
+
+@media only all and (max-width: 768px) {
+
+  #formUseArea {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+  }
+
+  #resultsArea {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    margin-top: 50px;
+  }
+
 }
