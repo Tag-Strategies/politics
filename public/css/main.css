@@ -138,11 +138,12 @@ header {
 }
 
 #form_button {
-  width: 250px;
+  width: 150px;
   background-color: blue;
   color: white;
   border: 5px solid red;
   margin-top: 15px;
+  margin-right: 10px;
 }
 
 .inputSize {
@@ -150,6 +151,11 @@ header {
   height: 50px;
   margin-top: 15px;
   font-size: 25px;
+}
+
+.button_fix {
+  display: flex;
+  flex-direction: row;
 }
 
 ul li {
