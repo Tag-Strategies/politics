@@ -12,7 +12,9 @@ function gettingPoliticianData() {
   let firstName = document.getElementById('firstname').value;
   let lastName = document.getElementById('lastname').value;
 
-  document.getElementById('name_placement').innerHTML = firstName + ' ' + lastName;
+  //This long line of code uppercases and displays the name of the politician that the user entered. I wish 
+  //That JS had a simpler way to uppercase the first letter like Python! 
+  document.getElementById('name_placement').innerHTML = firstName.charAt(0).toUpperCase() + firstName.slice(1) + ' ' + lastName.charAt(0).toUpperCase() + lastName.slice(1);
 
   //Setting up to get the API request
   let xhr = new XMLHttpRequest();
@@ -23,7 +25,13 @@ function gettingPoliticianData() {
   //parsing the response 
   let response_parsed = JSON.parse(response);
 
-  return response_parsed
+  //To do some error handling, I use this conditional statement. 
+  if (response_parsed.results.length === 0){
+    console.log('No Results');
+  }else {
+      let candidate_info_array = sortingPoliticianData(response_parsed);
+      buildPage(candidate_info_array)
+  }  
 };
 
 //This function will pull the specific data that I need from the FEC API.
@@ -105,11 +113,8 @@ function buildPage (candidate_info_array) {
 
 //This function is what luanches when the user his the submit button. 
 function mainFunction() {
-  
-  //Calling the functions that will be used in the program
-  let response_parsed = gettingPoliticianData();
-  let candidate_info_array = sortingPoliticianData(response_parsed);
-  buildPage(candidate_info_array)
+  //Calling the function that will be used in the program
+  gettingPoliticianData();
 }
 
 function clear() {
