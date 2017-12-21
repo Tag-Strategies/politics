@@ -23,11 +23,15 @@ function gettingPoliticianData() {
 
   //To do some error handling, I use this conditional statement. 
   if (response_parsed.results.length === 0){
+    //Informing the user that no information was found. 
     document.getElementById('name_placement').innerHTML = "Sorry No Results Found!";
   }else {
+
     //This long line of code uppercases and displays the name of the politician that the user entered. I wish 
     //That JS had a simpler way to uppercase the first letter like Python! 
     document.getElementById('name_placement').innerHTML = firstName.charAt(0).toUpperCase() + firstName.slice(1) + ' ' + lastName.charAt(0).toUpperCase() + lastName.slice(1);
+    
+    //Calling functions to sort and then display API data. 
     let candidate_info_array = sortingPoliticianData(response_parsed);
     buildPage(candidate_info_array);
   }  
@@ -116,6 +120,7 @@ function mainFunction() {
   gettingPoliticianData();
 }
 
+//This function will clear and reset the page for the user
 function clear() {
   location.reload();
 }
