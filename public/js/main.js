@@ -12,10 +12,6 @@ function gettingPoliticianData() {
   let firstName = document.getElementById('firstname').value;
   let lastName = document.getElementById('lastname').value;
 
-  //This long line of code uppercases and displays the name of the politician that the user entered. I wish 
-  //That JS had a simpler way to uppercase the first letter like Python! 
-  document.getElementById('name_placement').innerHTML = firstName.charAt(0).toUpperCase() + firstName.slice(1) + ' ' + lastName.charAt(0).toUpperCase() + lastName.slice(1);
-
   //Setting up to get the API request
   let xhr = new XMLHttpRequest();
   xhr.open("GET", "https://api.open.fec.gov/v1/candidates/search/?per_page=20&api_key=fDk8wXbxet3t4GuqnIa2I6TdlZBZnhy6GCEprEjj&sort=name&page=1&name=" + firstName + '%20' + lastName, false);
@@ -27,10 +23,13 @@ function gettingPoliticianData() {
 
   //To do some error handling, I use this conditional statement. 
   if (response_parsed.results.length === 0){
-    console.log('No Results');
+    document.getElementById('name_placement').innerHTML = "Sorry No Results Found!";
   }else {
-      let candidate_info_array = sortingPoliticianData(response_parsed);
-      buildPage(candidate_info_array)
+    //This long line of code uppercases and displays the name of the politician that the user entered. I wish 
+    //That JS had a simpler way to uppercase the first letter like Python! 
+    document.getElementById('name_placement').innerHTML = firstName.charAt(0).toUpperCase() + firstName.slice(1) + ' ' + lastName.charAt(0).toUpperCase() + lastName.slice(1);
+    let candidate_info_array = sortingPoliticianData(response_parsed);
+    buildPage(candidate_info_array);
   }  
 };
 
