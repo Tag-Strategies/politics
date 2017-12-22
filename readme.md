@@ -1,7 +1,9 @@
 # Politics
 ## Intro
 
-This project is using an API from the Federal Elections Commission to gather data about politicians. The website, for the API, may be found here: https://api.open.fec.gov/developers/#!/candidate/get_candidates_search. Having a political science and history background further drew me to using the FEC API. Let's see how this turns out!
+This project is using an API from the Federal Elections Commission to gather data about politicians. The website, for the API, may be found here: https://api.open.fec.gov/developers/#!/candidate/get_candidates_search. Having a political science and history background further drew me to using the FEC API.
+
+The project itself really just allows the user to type in a politicians name and it will return some basic information on that politician. 
 
 # Getting started
 ### Installing
