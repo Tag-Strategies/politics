@@ -158,10 +158,6 @@ header {
   flex-direction: row;
 }
 
-ul li {
-  font-size: 30px;
-}
-
 .info_area {
   margin-top: 30px;
 }
@@ -171,6 +167,10 @@ ul li {
   flex-direction: row;
   justify-content: space-around;
   margin-top: 50px;
+}
+
+.list_fix {
+  font-size: 30px;
 }
 
 footer {
