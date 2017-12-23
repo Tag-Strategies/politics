@@ -158,8 +158,9 @@ header {
   flex-direction: row;
 }
 
-.info_area {
+#info_area {
   margin-top: 30px;
+  display: none;
 }
 
 #resultsArea {

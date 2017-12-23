@@ -17,12 +17,14 @@ function gettingPoliticianData() {
   //parsing the response 
   let response_parsed = JSON.parse(response);
 
+  //This displays the heading to show the user what information was found. 
+  document.getElementById("info_area").style.display = 'block';
+
   //To do some error handling, I use this conditional statement. 
   if (response_parsed.results.length === 0){
     //Informing the user that no information was found. 
-    document.getElementById('name_placement').innerHTML = "Sorry No Results Found!";
+    document.getElementById('name_placement').innerHTML = "Sorry, No Results Found on " + firstName + ' ' + lastName;
   }else {
-
     //This long line of code uppercases and displays the name of the politician that the user entered. I wish 
     //That JS had a simpler way to uppercase the first letter like Python! 
     document.getElementById('name_placement').innerHTML = firstName.charAt(0).toUpperCase() + firstName.slice(1) + ' ' + lastName.charAt(0).toUpperCase() + lastName.slice(1);
@@ -121,7 +123,6 @@ function buildPage (candidate_info_array) {
     state.appendChild(state_info);
     attached_div.appendChild(state);
   }
-  candidate_info_array = [];
 }
 
 //This function is what luanches when the user his the submit button. 
