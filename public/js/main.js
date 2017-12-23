@@ -42,12 +42,26 @@ function sortingPoliticianData(response_parsed){
   for (let i = 0; i < response_parsed.results.length; i++){
     //Creating a new object that will hold the data
     let candidateInfo = new Object();
+
+
+
     //Specific data that I want from the response
     let candidate_status = response_parsed.results[i].candidate_status;
     let cycles = response_parsed.results[i].cycles;
     let office_full = response_parsed.results[i].office_full;
     let party_full = response_parsed.results[i].party_full;
     let state = response_parsed.results[i].state;
+
+    //The candidate status variable is in 'code' so I convert the code to an easier read format. 
+    if (candidate_status == 'P') {
+      candidate_status = 'Prior Candidate';
+    }else if (candidate_status == 'C'){
+      candidate_status = 'Present Candidate';
+    }else if (candidate_status == 'F'){
+      candidate_status = 'Future Candidate';
+    }else if (candidate_status == 'N') {
+      candidate_status = 'Not Yet a Candidate';
+    }
 
     //Setting the data to the object
     candidateInfo.candidate_status = candidate_status;
