@@ -28,8 +28,8 @@ Node packages used are Express, EJS.
 
 # Preview
 
-To see a video that talks about this project please go here: Coming Soon
+To see a video that talks about this project please go here: https://www.youtube.com/watch?v=5ZzLyHYPNb0
 
-Blog entry: Coming Soon
+Blog entry: https://codingsaga.wordpress.com/2018/01/07/fec-project-and-boldness/
 
 https://api.open.fec.gov/v1/candidates/search/?per_page=20&api_key=fDk8wXbxet3t4GuqnIa2I6TdlZBZnhy6GCEprEjj&sort=name&page=1&name=Mitt%20Romney
